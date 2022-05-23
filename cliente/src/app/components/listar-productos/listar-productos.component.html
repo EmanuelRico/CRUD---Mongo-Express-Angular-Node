@@ -1,0 +1,43 @@
+<div class="col-8 py-4 d-flex row mx-auto bg-white container">
+    <div class="row">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-primary mb-4" routerLink="/crear-producto">Agregar</button>
+        </div>
+        
+        <div *ngIf="listProductos.length > 0" class="container d-flex flex-row flex-nowrap" style="overflow-x:scroll;">
+            <div *ngFor="let producto of listProductos" class="card col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center shadow-lg mx-3 my-3">
+                <div class="card-body">
+                    <div class="d-flex align-items-center my-3">
+                        <h5 class="card-title mx-3 align-items-center m-0 p-0">Producto: </h5>
+                        <p class=" align-items-center m-0 p-0">{{ producto.nombre }}</p>
+                    </div>
+
+                    <div class="d-flex align-items-center my-3">
+                        <h5 class="card-title mx-3 align-items-center m-0 p-0">Categoría: </h5>
+                        <p class=" align-items-center m-0 p-0">{{ producto.categoria }}</p>
+                    </div>
+
+                    <div class="d-flex align-items-center my-3">
+                        <h5 class="card-title mx-3 align-items-center m-0 p-0">Cantidad: </h5>
+                        <p class=" align-items-center m-0 p-0">{{ producto.cantidad }}</p>
+                    </div>
+                    
+                    <div class="d-flex align-items-center my-3">
+                        <h5 class="card-title mx-3 align-items-center m-0 p-0">Precio: </h5>
+                        <p class=" align-items-center m-0 p-0">{{ producto.precio | currency:'USD' }}</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                        <button [routerLink]="['/editar-producto', producto._id]" class="btn btn-success mx-2">Editar</button>
+                        <button (click)="eliminarProducto(producto._id)" class="btn btn-danger">Eliminar</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <h5 style="text-align: start; margin-top: 10px;" *ngIf="listProductos.length == 0">No hay productos para mostrar</h5>
+    </div>
+</div>
+<div class="container mt-5">
+
+</div>

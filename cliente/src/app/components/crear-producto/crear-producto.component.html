@@ -1,0 +1,40 @@
+<div class="col-8 py-4 d-flex row mx-auto bg-white container">
+    <form action="/" method="POST" [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+        <label class="form-label" for="">Nombre del producto:</label>
+        <input type="text" formControlName="producto" class="form-control"placeholder="Producto" autocomplete="off">
+        <div class="text-danger"
+            *ngIf="productoForm.get('producto')?.hasError('required') && productoForm.get('producto')?.touched">
+            <span>El nombre del producto <strong>es obligatorio</strong></span>
+        </div>
+        <br>
+        <br>
+        <label class="form-label" for="">Categoría:</label>
+        <input type="text" formControlName="categoria" class="form-control"placeholder="Categoria" autocomplete="off">
+        <div class="text-danger"
+            *ngIf="productoForm.get('categoria')?.hasError('required') && productoForm.get('categoria')?.touched">
+            <span>La categoria <strong>es obligatoria</strong></span>
+        </div>
+        <br>
+        <br>
+        <label class="form-label" for="">Cantidad:</label>
+        <input type="number" formControlName="cantidad" class="form-control" placeholder="Cantidad" autocomplete="off">
+        <div class="text-danger"
+            *ngIf="productoForm.get('cantidad')?.hasError('required') && productoForm.get('cantidad')?.touched">
+            <span>La cantidad <strong>es obligatoria</strong></span>
+        </div>
+        <br>
+        <br>
+        <label class="form-label" for="">Precio:</label>
+        <input type="number" formControlName="precio" class="form-control" placeholder="Precio" autocomplete="off">
+        <div class="text-danger"
+            *ngIf="productoForm.get('precio')?.hasError('required') && productoForm.get('precio')?.touched">
+            <span>El precio <strong>es obligatorio</strong></span>
+        </div>
+        <br>
+        <br>
+        <div class="d-flex justify-content-end">
+            <button routerLink="/" class="btn btn-danger float-start">Cancelar</button>
+            <button type="submit" [disabled]="productoForm.invalid" class="btn btn-primary float-end ms-3">Agregar</button>
+        </div>
+    </form>
+</div>
