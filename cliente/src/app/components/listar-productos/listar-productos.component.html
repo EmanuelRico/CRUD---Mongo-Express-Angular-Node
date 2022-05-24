@@ -8,6 +8,13 @@
             <div *ngFor="let producto of listProductos" class="card col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-center shadow-lg mx-3 my-3">
                 <div class="card-body">
                     <div class="d-flex align-items-center my-3">
+                        <h5 class="card-title mx-3 align-items-center m-0 p-0">Imagen: </h5>
+                        <div>
+                            <img  style="max-height: 300px;" src="{{ listImg.fileUrl }}" alt="imagen">
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center my-3">
                         <h5 class="card-title mx-3 align-items-center m-0 p-0">Producto: </h5>
                         <p class=" align-items-center m-0 p-0">{{ producto.nombre }}</p>
                     </div>

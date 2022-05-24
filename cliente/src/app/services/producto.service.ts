@@ -30,4 +30,16 @@ export class ProductoService {
   editarProducto(id: string, producto: Producto): Observable<any> {
     return this.http.put(this.url + id, producto);
   }
+
+  obtenerImagenes() {
+    return this.http.get('${this.url}/descargar');
+  }
+
+  guardarImagen(name: string, file: File): Observable<Object> {
+    const form = new FormData();
+    form.append('name', name);
+    form.append('file', file, 'form-data');
+
+    return this.http.post<Object>('${this.url}/subirimg', form);
+  }
 }
