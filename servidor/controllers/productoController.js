@@ -8,7 +8,7 @@ exports.crearProducto = async (req, res) => {
 
         // Creamos nuestro producto
         producto = new Producto(req.body);
-
+        console.log(req.body);
         await producto.save();
         res.send(producto);
         
@@ -22,7 +22,7 @@ exports.obtenerProductos = async (req, res) => {
 
     try {
 
-        const productos = await Producto.find;
+        const productos = await Producto.find();
         res.json(productos)
         
     } catch (error) {
@@ -35,7 +35,7 @@ exports.obtenerProductos = async (req, res) => {
 exports.actualizarProducto = async (req, res) => {
 
     try {
-        const { nombre, categoria, cantidad, precio, img } = req.body;
+        const { nombre, categoria, cantidad, precio, imagen } = req.body;
         let producto = await Producto.findById(req.params.id);
 
         if(!producto) {
@@ -46,7 +46,7 @@ exports.actualizarProducto = async (req, res) => {
         producto.categoria = categoria;
         producto.cantidad = cantidad;
         producto.precio = precio;
-        producto.img = img;
+        producto.imagen = imagen;
 
         producto = await Producto.findOneAndUpdate({ _id: req.params.id },producto, { new: true} )
         res.json(producto);

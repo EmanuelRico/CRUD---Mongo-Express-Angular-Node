@@ -17,9 +17,9 @@ const ProductoSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    img: {
+    imagen: {
         type: String,
-        required: true
+        required: true,
     },
     fechaCreacion: {
         type: Date,

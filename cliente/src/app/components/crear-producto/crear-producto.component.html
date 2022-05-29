@@ -32,19 +32,20 @@
         </div>
         <br>
         <br>
+
         <label class="form-label" for="">Imagen:</label>
-        <input type="file" formControlName="img" class="form-control" placeholder="imagen" autocomplete="off" (change)="OnFileChange($event)" #photoInput>
+        <input type="file" formControlName="imagen" class="form-control" placeholder="imagen" autocomplete="off" (change)="OnFileChange($event)" #photoInput>
         <div class="text-danger"
-            *ngIf="productoForm.get('img')?.hasError('required') && productoForm.get('img')?.touched">
-            <span>La imagen <strong>es obligatorio</strong></span>
+            *ngIf="productoForm.get('imagen')?.hasError('required') && productoForm.get('imagen')?.touched">
+            <span>La imagen <strong>es obligatoria</strong></span>
         </div>
         <img *ngIf="image" style="max-height: 300px; margin-top: 20px" src="{{ image }}" alt="imagen" (click)="photoInput.click()">
-        
         <br>
         <br>
         <div class="d-flex justify-content-end">
             <button routerLink="/" class="btn btn-danger float-start">Cancelar</button>
             <button type="submit" [disabled]="productoForm.invalid" class="btn btn-primary float-end ms-3">Agregar</button>
         </div>
+
     </form>
 </div>
