@@ -39,7 +39,8 @@
             *ngIf="productoForm.get('imagen')?.hasError('required') && productoForm.get('imagen')?.touched">
             <span>La imagen <strong>es obligatoria</strong></span>
         </div>
-        <img *ngIf="image" style="max-height: 300px; margin-top: 20px" src="{{ image }}" alt="imagen" (click)="photoInput.click()">
+        <img *ngIf="imagen" style="max-height: 300px; margin-top: 20px" src="{{ imagen }}" alt="imagen" (click)="photoInput.click()">
+
         <br>
         <br>
         <div class="d-flex justify-content-end">

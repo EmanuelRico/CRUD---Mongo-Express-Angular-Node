@@ -8,7 +8,6 @@ exports.crearProducto = async (req, res) => {
 
         // Creamos nuestro producto
         producto = new Producto(req.body);
-        console.log(req.body);
         await producto.save();
         res.send(producto);
         

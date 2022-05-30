@@ -11,7 +11,7 @@ import { ProductoService } from 'src/app/services/producto.service';
   styleUrls: ['./crear-producto.component.css']
 })
 export class CrearProductoComponent implements OnInit {
-  public image: any = "../../../assets/noimage.jpg";
+  public imagen: any = "../../../assets/noimage.jpg";
   public archivo: any;
   public nameimg!: string;
   productoForm: FormGroup;
@@ -27,7 +27,7 @@ export class CrearProductoComponent implements OnInit {
       categoria: ['', Validators.required],
       cantidad: ['', Validators.required],
       precio: ['', Validators.required],
-      imagen: ['', Validators.required],
+      imagen: [''],
     })
     this.id = this.aRouter.snapshot.paramMap.get('id');
   }
@@ -43,7 +43,7 @@ export class CrearProductoComponent implements OnInit {
       categoria: this.productoForm.get('categoria')?.value,
       cantidad: this.productoForm.get('cantidad')?.value,
       precio: this.productoForm.get('precio')?.value,
-      imagen: this.image,
+      imagen: this.imagen,
     }
 
     if(this.id !== null){
@@ -79,8 +79,9 @@ export class CrearProductoComponent implements OnInit {
           reader.readAsDataURL(file);
           
           reader.onload = function load(this: any) {
-          this.image = reader.result;
-          console.log(this.image);
+          this.editableimagen = reader.result;
+          this.imagen = reader.result;
+          console.log(this.imagen);
           }.bind(this);
         }else {
           console.log('Hubo un error')
@@ -91,18 +92,27 @@ export class CrearProductoComponent implements OnInit {
 
 
   esEditar() {
-
     if(this.id !== null) {
       this.titulo = 'Editar producto';
       this._productoService.obtenerProducto(this.id).subscribe(data => {
+        this.imagen = null;
+        const fileimage = this.tofile();
         this.productoForm.setValue({
           producto: data.nombre,
           categoria: data.categoria,
           cantidad: data.cantidad,
           precio: data.precio,
+          imagen: fileimage,
         })
+        this.imagen = data.imagen;
+        
       })
     }
+  }
+
+  tofile() {
+    var a = document.createElement('a');
+    return a;
   }
 
 }
